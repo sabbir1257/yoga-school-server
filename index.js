@@ -214,7 +214,7 @@ async function run() {
           $set: {
             status: status,
           },
-        };
+        }
         const result = await classesCollection.updateOne(filter, updatedStatus);
         res.send(result);
       }
