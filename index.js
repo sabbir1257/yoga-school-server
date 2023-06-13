@@ -153,7 +153,7 @@ async function run() {
         status: "pending",
         enrolled: 0,
         feedback: "",
-      }
+      };
 
       const instructor = await instructorCollection.findOne({
         email: data.instructor_email,
@@ -200,7 +200,7 @@ async function run() {
         .limit(6)
         .toArray();
       res.send(result);
-    });
+    })
     // change status
     app.put(
       "/change-class-status/:id",
