@@ -200,7 +200,7 @@ async function run() {
         .limit(6)
         .toArray();
       res.send(result);
-    })
+    });
     // change status
     app.put(
       "/change-class-status/:id",
@@ -214,7 +214,7 @@ async function run() {
           $set: {
             status: status,
           },
-        }
+        };
         const result = await classesCollection.updateOne(filter, updatedStatus);
         res.send(result);
       }
@@ -259,7 +259,7 @@ async function run() {
       const id = req.params.id;
       const result = await usersCollection.deleteOne({ _id: new ObjectId(id) });
       res.send(result);
-    });
+    })
 
     app.post("/select-class", verifyToken, async (req, res) => {
       const singleClass = req.body;
