@@ -153,7 +153,7 @@ async function run() {
         status: "pending",
         enrolled: 0,
         feedback: "",
-      };
+      }
 
       const instructor = await instructorCollection.findOne({
         email: data.instructor_email,
