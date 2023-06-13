@@ -272,7 +272,7 @@ async function run() {
         instructor_email: singleClass.instructor_email,
         price: singleClass.price,
         email: singleClass.email,
-      };
+      }
 
       const result = await seletedCollection.insertOne(addToClass);
       res.send(result);
