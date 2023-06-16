@@ -43,7 +43,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     //  client.connect();
-    const classesCollection = client.db("yoga").collection("class");
+    const classesCollection = client.db("yoga").collection("classes");
     const instructorCollection = client.db("yoga").collection("instructors");
     const usersCollection = client.db("yoga").collection("users");
     const seletedCollection = client.db("yoga").collection("seleted_classes");
@@ -259,7 +259,7 @@ async function run() {
       const id = req.params.id;
       const result = await usersCollection.deleteOne({ _id: new ObjectId(id) });
       res.send(result);
-    })
+    });
 
     app.post("/select-class", verifyToken, async (req, res) => {
       const singleClass = req.body;
@@ -272,7 +272,7 @@ async function run() {
         instructor_email: singleClass.instructor_email,
         price: singleClass.price,
         email: singleClass.email,
-      }
+      };
 
       const result = await seletedCollection.insertOne(addToClass);
       res.send(result);
@@ -302,6 +302,7 @@ async function run() {
 
     app.get("/selected-classes", verifyToken, async (req, res) => {
       const email = req?.query?.email;
+      console.log(email)
       const result = await seletedCollection.find({ email: email }).toArray();
       res.send(result);
     });
